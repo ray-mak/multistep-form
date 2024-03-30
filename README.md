@@ -1,2 +1,3 @@
 <h1>Overview<h1>
-<p>First commit. Created the homepage and layout for the other steps. Set up page navigation. Next steps is to set up buttons and functions to dynamically navigate between pages. </P>
+<p>First commit. Created the homepage and layout for the other steps. Set up page navigation. Next steps is to set up buttons and functions to dynamically navigate between pages. </p>
+<p>Second commit. Added functionality to buttons which will allow for user to navigate between steps. Also added some form validation functions to the Personal Info page to make sure form fields are filled. </p>
