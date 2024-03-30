@@ -38,7 +38,7 @@ export default function PersonalInfo(props) {
         <div className="input-container">
             <h1 className="heading">Personal Info</h1>
             <p className="subheading">Please provide your name, email address, and phone number</p>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="personal-form">
                 <label htmlFor={id + "-name"}>
                     Name
                     {required.nameReq && <span className="required">This field is required</span>}
