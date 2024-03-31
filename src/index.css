@@ -115,14 +115,14 @@ form {
   flex-direction: column;
   margin-top: 1em;
   flex: 1 1 auto;
+  position: relative;
 }
 
 .personal-form {
   width: 460px
 }
 
-label {
-  display: flex;
+label{
   color: var(--marine-blue);
   font-weight: 500;
   font-size: .875rem;
@@ -197,7 +197,7 @@ input:focus {
   gap: 1em;
 }
 
-input[type=radio] {
+input[type=radio], input[type=checkbox] {
   position: absolute;
   opacity: 0;
   left: -9000px;
@@ -231,35 +231,101 @@ input[type=radio] {
 }
 
 .yearly-container {
+  position: relative;
   width: 100%;
-  height: 80px;
   background-color: var(--magnolia);
-  margin-top: 24px
+  margin-top: 24px;
+  border-radius: 8px;
+  padding: 16px;
 }
 
 .yearly-container label{
   font-weight: 700
 }
 
-.toggle-annual {
-  position: absolute;
-  opacity: 0;
-  left: -9000px;
-  top: -9000px
-}
-
-.toggle-annual + label::after {
+.toggle-btn {
   content: "";
   width: 40px;
   height: 20px;
   background-color: var(--marine-blue);
   margin: 0 16px;
   border-radius: 12px;
+  border: none
 }
 
 .annual-label {
   text-align: center;
   color: var(--cool-gray)
+}
+
+.promo-text {
+  color: var(--marine-blue);
+  font-weight: 500;
+  font-size: .8rem;
+  letter-spacing: -.5px;
+  margin-top: 6px;
+}
+
+.dot {
+  position: absolute;
+  left: 47.8%;
+  width: 13px;
+  height: 13px;
+  background-color: var(--white);
+  border-radius: 50%;
+  transition: all .3s;
+}
+
+.dot.yearly-plan {
+  left: 52%
+}
+
+.yearly-container input:checked + label {
+  color: var(--marine-blue)
+}
+
+.addon-label {
+  display: flex;
+  width: 440px;
+  padding: 20px;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.addon-label:hover {
+  border: 1px solid var(--purplish-blue);
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  background-image: url("https://github.com/ray-mak/multistep-form/assets/154634286/a93d2129-e267-4f8c-8964-493fdf1cffcb");
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+input[type=checkbox]:checked + .addon-label .checkmark {
+  background-color: var(--purplish-blue);
+}
+
+.addon-container input:checked + label {
+  background-color: var(--magnolia);
+}
+
+.addon-text {
+  margin-left: 20px;
+}
+
+.purple-text {
+  color: var(--purplish-blue);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: auto;
 }
 
 @media (max-width: 900px) {
@@ -282,6 +348,8 @@ input[type=radio] {
   .plan-card {
     padding: 10px
   }
+
+
 }
 
 @media (max-width: 680px) {
@@ -348,6 +416,25 @@ input[type=radio] {
   .plan-icon { 
     margin-bottom: 0;
     margin-right: 12px;
+  }
+
+  .dot {
+    left: 48%
+  }
+
+  .dot.yearly-plan {
+    left: 52%;
+  }
+
+}
+
+@media (max-width: 430px) {
+  .dot {
+    left: 47.2%
+  }
+
+  .dot.yearly-plan {
+    left: 52.5%;
   }
 
 }

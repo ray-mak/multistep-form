@@ -13,6 +13,8 @@ function App() {
       name: "",
       email: "",
       phone: "",
+      plan: "arcade",
+      planLength: "monthly"
     }
   )
 
@@ -38,6 +40,10 @@ function App() {
       currentStepIndex={currentStepIndex}
       next={next}
       back={back}
+      formData={formData}
+      handleChange={handleChange}
+      onSubmit={onSubmit}
+      togglePlanLength={togglePlanLength}
     />,
     <AddOn
       currentStepIndex={currentStepIndex}
@@ -63,6 +69,13 @@ function App() {
       if (i <= 0) return i
       return i - 1
   })
+  }
+
+  function togglePlanLength() {
+    setFormData(prevData => ({
+      ...prevData,
+      planLength: prevData.planLength === "monthly" ? "yearly" :"monthly" 
+    }))
   }
   
   return (
