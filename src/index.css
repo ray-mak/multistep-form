@@ -328,6 +328,61 @@ input[type=checkbox]:checked + .addon-label .checkmark {
   margin-left: auto;
 }
 
+.summary-container {
+  width: 100%;
+  background-color: var(--magnolia);
+  margin-top: 12px;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.plan-summary {
+  display: flex;
+  align-items: center;
+}
+
+.plan-summary .selection-title {
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.plan-summary .subheading {
+  font-size: .875rem;
+}
+
+.change {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.summary-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-gray);
+  margin: 24px 0;
+}
+
+.plan-summary span {
+  margin-left: auto;
+  color: var(--marine-blue);
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.total-container {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.total-container span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-left: auto;
+  color: var(--purplish-blue)
+}
+
 @media (max-width: 900px) {
   .main-container {
     padding: .75em;
@@ -349,6 +404,9 @@ input[type=checkbox]:checked + .addon-label .checkmark {
     padding: 10px
   }
 
+  .addon-label {
+    width: 100%;
+  }
 
 }
 

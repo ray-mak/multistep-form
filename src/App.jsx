@@ -3,7 +3,8 @@ import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
 import AddOn from "./components/AddOn";
 import Sidebar from './Sidebar';
-import { useState } from 'react';
+import Summary from './components/Summary';
+import { useState,useEffect } from 'react';
 
 function App() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
@@ -14,9 +15,68 @@ function App() {
       email: "",
       phone: "",
       plan: "arcade",
-      planLength: "monthly"
+      planLength: "monthly",
+      onlineService: false,
+      largerStorage: false,
+      customizable: false,
     }
   )
+
+  const [cost, setCost] = useState(
+    {
+      monthly: {
+        plan: 9,
+        onlineService: 1,
+        largerStorage: 2,
+        customizable: 2,
+      },
+      yearly: {
+        plan: 90,
+        onlineService: 10,
+        largerStorage: 20,
+        customizable: 20,
+      }
+    }
+  )
+
+  useEffect(() => {
+    setCost(prevCost => {
+      if (formData.plan === "arcade") {
+        prevCost.monthly.plan = 9;
+        prevCost.yearly.plan = 90
+      } else if (formData.plan === "advanced") {
+        prevCost.monthly.plan = 12;
+        prevCost.yearly.plan = 120
+      } else {
+        prevCost.monthly.plan = 15;
+        prevCost.yearly.plan = 150
+      }
+      if (formData.onlineService) {
+        prevCost.monthly.onlineService = 1;
+        prevCost.yearly.onlineService = 10
+      } else {
+        prevCost.monthly.onlineService = 0;
+        prevCost.yearly.onlineService = 0
+      }
+      if (formData.largerStorage) {
+        prevCost.monthly.largerStorage = 2;
+        prevCost.yearly.largerStorage = 20
+      } else {
+        prevCost.monthly.largerStorage = 0;
+        prevCost.yearly.largerStorage = 0
+      }
+      if (formData.customizable) {
+        prevCost.monthly.customizable = 2;
+        prevCost.yearly.customizable = 20
+      } else {
+        prevCost.monthly.customizable = 0;
+        prevCost.yearly.customizable = 0
+      }
+      
+      return prevCost
+    })
+    
+  }, [formData])
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -26,19 +86,18 @@ function App() {
     })
     
   }
-  console.log(formData)
+  console.log(cost)
   const steps = [
     <PersonalInfo 
       currentStepIndex={currentStepIndex}
-      next={next}
       back={back}
+      next={next}
       formData={formData}
       handleChange={handleChange}
       onSubmit={onSubmit}
     />,
     <SelectPlan 
       currentStepIndex={currentStepIndex}
-      next={next}
       back={back}
       formData={formData}
       handleChange={handleChange}
@@ -47,7 +106,13 @@ function App() {
     />,
     <AddOn
       currentStepIndex={currentStepIndex}
-      next={next}
+      back={back}
+      formData={formData}
+      handleChange={handleChange}
+      onSubmit={onSubmit}
+    />,
+    <Summary 
+      currentStepIndex={currentStepIndex}
       back={back}
     />
   ]
