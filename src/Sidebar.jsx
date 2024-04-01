@@ -27,7 +27,7 @@ export default function Sidebar(props) {
                 </div>
             </div>
             <div className="step-container">
-                <div className={`step-number center ${stepNum === 3 ? "active" : ""}`}>4</div>
+                <div className={`step-number center ${stepNum === 3 || stepNum === 4 ? "active" : ""}`}>4</div>
                 <div className="step-label-container">
                     <p className="step-text fs-200">STEP 4</p>
                     <p className="step-name">SUMMARY</p>

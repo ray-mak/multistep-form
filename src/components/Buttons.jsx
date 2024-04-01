@@ -9,7 +9,8 @@ export default function Buttons(props) {
                     className="button go-back"
                     onClick={props.back}>Go Back</button>
             }
-            <button type="submit" className="button next-step">Next Step</button>
+            {props.currentStepIndex !== 3 && <button type="submit" className="button next-step">Next Step</button>}
+            {props.currentStepIndex == 3 && <button type="submit" onClick={props.onSubmit} className="button next-step">Confirm</button>}
         </div>
     )
 }

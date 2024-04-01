@@ -5,6 +5,7 @@ import AddOn from "./components/AddOn";
 import Sidebar from './Sidebar';
 import Summary from './components/Summary';
 import { useState,useEffect } from 'react';
+import ThankYou from './components/ThankYou';
 
 function App() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
@@ -86,7 +87,7 @@ function App() {
     })
     
   }
-  console.log(cost)
+
   const steps = [
     <PersonalInfo 
       currentStepIndex={currentStepIndex}
@@ -114,7 +115,12 @@ function App() {
     <Summary 
       currentStepIndex={currentStepIndex}
       back={back}
-    />
+      formData={formData}
+      cost={cost}
+      onSubmit={onSubmit}
+      goToStepNum={goToStepNum}
+    />,
+    <ThankYou />
   ]
 
   function onSubmit(e) {
@@ -124,6 +130,7 @@ function App() {
 
   function next() {
       setCurrentStepIndex(i => {
+        console.log(currentStepIndex)
           if (i >= steps.length - 1) return i
           return i + 1
       })
@@ -134,6 +141,10 @@ function App() {
       if (i <= 0) return i
       return i - 1
   })
+  }
+
+  function goToStepNum(step) {
+    setCurrentStepIndex(step)
   }
 
   function togglePlanLength() {
